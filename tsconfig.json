@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.main.json" },
+    { "path": "./tsconfig.eslint.json" }
+  ],
+  "compilerOptions": { "composite": true }
+}

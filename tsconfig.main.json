@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "@tsconfig/node22/tsconfig.json",
+    "@tsconfig/strictest/tsconfig.json"
+  ],
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "noUncheckedSideEffectImports": true,
+    "types": ["@types/node"],
+    "declarationMap": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "verbatimModuleSyntax": true,
+    "composite": true
+  }
+}
