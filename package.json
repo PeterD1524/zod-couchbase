@@ -5,7 +5,10 @@
   "homepage": "https://github.com/PeterD1524/zod-couchbase",
   "license": "MIT",
   "files": [
-    "dist",
+    "dist/src/**/*.d.ts",
+    "dist/src/**/*.d.ts.map",
+    "dist/src/**/*.js",
+    "dist/src/**/*.js.map",
     "src"
   ],
   "exports": {
