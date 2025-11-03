@@ -357,4 +357,20 @@ export class TransactionModel<
       this.attempt,
     );
   }
+
+  async insert(
+    id: Id,
+    content: Output<T, IdField, TypeField, CreatedAtField, UpdatedAtField>,
+  ) {
+    const key = await this.config.key(id);
+    const result = await this.attempt.insert(this.collection, key, content);
+    if (!result.ok) {
+      return result;
+    }
+    return new TransactionDocument(
+      { type: "transaction_get", id, key, content, result: result.value },
+      this.config,
+      this.attempt,
+    );
+  }
 }
