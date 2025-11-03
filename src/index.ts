@@ -1,4 +1,5 @@
 export { createModelConfig } from "./config.js";
+export type { ModelConfig } from "./config.js";
 export {
   ZCCasMismatchError,
   ZCDocumentExistsError,
@@ -7,4 +8,4 @@ export {
   ZCTransactionFailedError,
   ZCUnspecifiedCouchbaseError,
 } from "./error.js";
-export { createZodCouchbase } from "./zod-couchbase.js";
+export { createZodCouchbase, ZodCouchbase } from "./zod-couchbase.js";
