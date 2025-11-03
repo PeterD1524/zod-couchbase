@@ -378,3 +378,26 @@ export class TransactionModel<
     );
   }
 }
+
+export type InferTransactionModel<Config> =
+  Config extends ModelConfig<
+    infer T,
+    infer Id,
+    infer Type,
+    infer Timestamp,
+    infer IdField,
+    infer TypeField,
+    infer CreatedAtField,
+    infer UpdatedAtField
+  >
+    ? TransactionModel<
+        T,
+        Id,
+        Type,
+        Timestamp,
+        IdField,
+        TypeField,
+        CreatedAtField,
+        UpdatedAtField
+      >
+    : never;
