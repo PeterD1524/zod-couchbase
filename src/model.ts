@@ -345,16 +345,18 @@ export class TransactionModel<
     if (!result.ok) {
       return result;
     }
-    return new TransactionDocument(
-      {
-        type: "transaction_get",
-        id,
-        key,
-        content: result.value.content,
-        result: result.value,
-      },
-      this.config,
-      this.attempt,
+    return Result.ok(
+      new TransactionDocument(
+        {
+          type: "transaction_get",
+          id,
+          key,
+          content: result.value.content,
+          result: result.value,
+        },
+        this.config,
+        this.attempt,
+      ),
     );
   }
 
@@ -367,10 +369,12 @@ export class TransactionModel<
     if (!result.ok) {
       return result;
     }
-    return new TransactionDocument(
-      { type: "transaction_get", id, key, content, result: result.value },
-      this.config,
-      this.attempt,
+    return Result.ok(
+      new TransactionDocument(
+        { type: "transaction_get", id, key, content, result: result.value },
+        this.config,
+        this.attempt,
+      ),
     );
   }
 }
