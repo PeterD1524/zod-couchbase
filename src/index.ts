@@ -8,4 +8,5 @@ export {
   ZCTransactionFailedError,
   ZCUnspecifiedCouchbaseError,
 } from "./error.js";
+export type { InferCollectionModel } from "./model.js";
 export { createZodCouchbase, ZodCouchbase } from "./zod-couchbase.js";
