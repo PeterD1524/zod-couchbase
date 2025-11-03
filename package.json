@@ -1,6 +1,6 @@
 {
   "name": "zod-couchbase",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Object-document mapper for Couchbase using Zod",
   "homepage": "https://github.com/PeterD1524/zod-couchbase",
   "license": "MIT",
