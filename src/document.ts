@@ -359,8 +359,6 @@ export class TransactionDocument<
     options?: {
       updatedAt?: Timestamp | undefined;
       preserveUpdatedAt?: boolean | undefined;
-      expiry?: number | Date | undefined;
-      preserveExpiry?: boolean | undefined;
     },
   ) {
     if (
