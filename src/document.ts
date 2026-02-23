@@ -147,7 +147,7 @@ export class CollectionDocument<
       throw new Error("updatedAt field is not configured");
     }
     if (options?.updatedAt !== undefined && options.preserveUpdatedAt) {
-      throw new Error("updatedAt is set but preserveUpdatedAt is true");
+      throw new Error("updatedAt is set when preserveUpdatedAt is true");
     }
     const v: unknown = value;
     if (typeof v === "object" && v !== null && !Array.isArray(v)) {
