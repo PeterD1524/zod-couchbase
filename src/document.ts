@@ -87,13 +87,11 @@ export class CollectionDocument<
           this.config.fields.id !== undefined &&
           Object.hasOwn(data, this.config.fields.id.name)
         ) {
-          if (this.config.fields.id.name in data) {
-            this.fields.id = {
-              value: (
-                data as Record<typeof this.config.fields.id.name, unknown>
-              )[this.config.fields.id.name],
-            };
-          }
+          this.fields.id = {
+            value: (data as Record<typeof this.config.fields.id.name, unknown>)[
+              this.config.fields.id.name
+            ],
+          };
         }
         if (
           this.config.fields.type !== undefined &&
@@ -311,13 +309,11 @@ export class TransactionDocument<
           this.config.fields.id !== undefined &&
           Object.hasOwn(data, this.config.fields.id.name)
         ) {
-          if (this.config.fields.id.name in data) {
-            this.fields.id = {
-              value: (
-                data as Record<typeof this.config.fields.id.name, unknown>
-              )[this.config.fields.id.name],
-            };
-          }
+          this.fields.id = {
+            value: (data as Record<typeof this.config.fields.id.name, unknown>)[
+              this.config.fields.id.name
+            ],
+          };
         }
         if (
           this.config.fields.type !== undefined &&
