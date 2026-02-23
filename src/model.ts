@@ -362,9 +362,62 @@ export class TransactionModel<
 
   async insert(
     id: Id,
-    content: Output<T, IdField, TypeField, CreatedAtField, UpdatedAtField>,
+    value: Output<T, IdField, TypeField, CreatedAtField, UpdatedAtField>,
   ) {
     const key = await this.config.key(id);
+    const v: unknown = value;
+    if (typeof v === "object" && v !== null && !Array.isArray(v)) {
+      if (this.config.fields.id !== undefined) {
+        Object.defineProperty(v, this.config.fields.id.name, {
+          configurable: true,
+          enumerable: true,
+          value: id,
+          writable: true,
+        });
+      }
+      if (this.config.fields.type !== undefined) {
+        Object.defineProperty(v, this.config.fields.type.name, {
+          configurable: true,
+          enumerable: true,
+          value: this.config.type,
+          writable: true,
+        });
+      }
+      let createdAt: unknown = undefined;
+      if (this.config.fields.createdAt !== undefined) {
+        createdAt = (
+          v as Record<typeof this.config.fields.createdAt.name, unknown>
+        )[this.config.fields.createdAt.name];
+        if (createdAt === undefined) {
+          createdAt = await this.config.now();
+          Object.defineProperty(v, this.config.fields.createdAt.name, {
+            configurable: true,
+            enumerable: true,
+            value: createdAt,
+            writable: true,
+          });
+        }
+      }
+      if (this.config.fields.updatedAt !== undefined) {
+        let updatedAt: unknown = (
+          v as Record<typeof this.config.fields.updatedAt.name, unknown>
+        )[this.config.fields.updatedAt.name];
+        if (updatedAt === undefined) {
+          if (createdAt === undefined) {
+            updatedAt = await this.config.now();
+          } else {
+            updatedAt = createdAt;
+          }
+          Object.defineProperty(v, this.config.fields.updatedAt.name, {
+            configurable: true,
+            enumerable: true,
+            value: updatedAt,
+            writable: true,
+          });
+        }
+      }
+    }
+    const content = z4.encode(this.config.schema, v as z4.output<T>);
     const result = await this.attempt.insert(this.collection, key, content);
     if (!result.ok) {
       return result;
