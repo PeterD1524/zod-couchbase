@@ -3,7 +3,7 @@
     "@tsconfig/node22/tsconfig.json",
     "@tsconfig/strictest/tsconfig.json"
   ],
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "vitest.config.ts"],
   "compilerOptions": {
     "noUncheckedSideEffectImports": true,
     "types": ["@types/node"],
